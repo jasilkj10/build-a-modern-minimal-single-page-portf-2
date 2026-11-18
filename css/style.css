@@ -231,7 +231,7 @@ body {
 }
 
 .text-gradient-purple {
-  background: linear-gradient(135deg, #f8fafc 0%, #d8b4fe 40%, #a855f7 75%, #7c3aed 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 35%, #c084fc 70%, #9333ea 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -240,6 +240,18 @@ body {
   background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+h1, .hero-headline {
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  letter-spacing: -0.03em;
+}
+
+button, a {
+  cursor: pointer;
 }
 
 /* --------------------------------------------------------------------
