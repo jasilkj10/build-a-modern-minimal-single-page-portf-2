@@ -134,15 +134,15 @@
         <!-- Badge -->
         <div class="fade-up-element inline-flex items-center gap-2 glass-badge px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-8">
           <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
-          <span id="hero-badge">✦ AI &amp; CSE Student</span>
+          <span id="hero-badge">✦ Open to opportunities</span>
           <span class="text-purple-400/60">•</span>
-          <span class="text-purple-300 text-xs">Thejus Engg College</span>
+          <span id="hero-badge-sub" class="text-purple-300 text-xs">AI &amp; CSE Student</span>
         </div>
 
         <!-- Main Bold Headline -->
         <h1 id="hero-headline" class="fade-up-element text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.08] max-w-4xl mb-6">
           Hi, I'm Jasil KJ <br class="hidden sm:inline" />
-          <span class="text-gradient-purple font-extrabold tracking-tight">Building Smarter Things with AI</span>
+          Building Smarter Things with <span class="text-gradient-purple font-black">AI</span>
         </h1>
 
         <!-- Subtext -->
@@ -174,10 +174,13 @@
       <!-- GLOSSY 3D GLASS / CHROME PURPLE TORUS KNOT CONTAINER -->
       <!-- Positioned at the bottom of the hero, partly cropped -->
       <div class="relative w-full h-[360px] sm:h-[440px] md:h-[500px] mt-6 pointer-events-auto flex items-end justify-center overflow-hidden">
-        <div id="three-hero-container" class="w-full h-full relative cursor-grab active:cursor-grabbing"></div>
+        <!-- Deep radial purple glow directly behind the 3D knot -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[420px] sm:w-[600px] h-[280px] bg-gradient-to-t from-purple-600/35 via-violet-500/20 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
+
+        <div id="three-hero-container" class="w-full h-full relative cursor-grab active:cursor-grabbing z-10"></div>
         
         <!-- Soft gradient fade mask at bottom of hero -->
-        <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#05030F] via-[#05030F]/80 to-transparent pointer-events-none z-10"></div>
+        <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#05030F] via-[#05030F]/85 to-transparent pointer-events-none z-20"></div>
       </div>
     </section>
 
