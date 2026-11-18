@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p1Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120c28" />
+      <stop offset="50%" stop-color="#090518" />
+      <stop offset="100%" stop-color="#030209" />
+    </linearGradient>
+    <linearGradient id="p1Accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <radialGradient id="p1Glow" cx="70%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#9333ea" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#9333ea" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="600" height="380" rx="16" fill="url(#p1Bg)" />
+  <circle cx="420" cy="120" r="160" fill="url(#p1Glow)" />
+
+  <!-- Code / UI Card Mockup -->
+  <g transform="translate(40, 40)">
+    <!-- Header Bar -->
+    <rect width="520" height="42" rx="10" fill="#171032" stroke="#2d1f5e" stroke-width="1" />
+    <circle cx="25" cy="21" r="5" fill="#ef4444" opacity="0.8" />
+    <circle cx="45" cy="21" r="5" fill="#f59e0b" opacity="0.8" />
+    <circle cx="65" cy="21" r="5" fill="#10b981" opacity="0.8" />
+    <text x="260" y="26" text-anchor="middle" fill="#a78bfa" font-family="monospace" font-size="12">study_companion_agent.py — LangChain + Streamlit</text>
+
+    <!-- Main Content Area -->
+    <rect y="54" width="520" height="246" rx="12" fill="#0d081e" stroke="#221745" stroke-width="1" />
+
+    <!-- Chat Prompt Box -->
+    <g transform="translate(24, 78)">
+      <rect width="472" height="48" rx="8" fill="#1b1238" stroke="#3b2d6b" stroke-width="1" />
+      <circle cx="24" cy="24" r="12" fill="url(#p1Accent)" />
+      <text x="24" y="28" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="11">AI</text>
+      <text x="50" y="28" fill="#e9d5ff" font-family="system-ui, sans-serif" font-size="12">Summarizing Chapter 4: Neural Architecture & Gradient Descent...</text>
+    </g>
+
+    <!-- Interactive Data / Code pills -->
+    <g transform="translate(24, 142)">
+      <rect width="220" height="136" rx="8" fill="#140d2b" stroke="#281a4d" stroke-width="1" />
+      <text x="16" y="26" fill="#818cf8" font-family="monospace" font-size="11">&gt; Tokens Analyzed: 14,280</text>
+      <text x="16" y="50" fill="#a78bfa" font-family="monospace" font-size="11">&gt; Context: RAG VectorStore</text>
+      <text x="16" y="74" fill="#34d399" font-family="monospace" font-size="11">&gt; Accuracy: 98.4%</text>
+      <text x="16" y="98" fill="#e2e8f0" font-family="monospace" font-size="11">&gt; Latency: 240ms</text>
+      <rect x="16" y="112" width="188" height="6" rx="3" fill="#2d1f5e" />
+      <rect x="16" y="112" width="145" height="6" rx="3" fill="url(#p1Accent)" />
+    </g>
+
+    <g transform="translate(260, 142)">
+      <rect width="236" height="136" rx="8" fill="#140d2b" stroke="#281a4d" stroke-width="1" />
+      <text x="16" y="26" fill="#f43f5e" font-family="monospace" font-size="11">from langchain.chains import RAG</text>
+      <text x="16" y="46" fill="#c084fc" font-family="monospace" font-size="11">model = ChatOpenAI(temp=0.2)</text>
+      <text x="16" y="66" fill="#93c5fd" font-family="monospace" font-size="11">response = qa_chain.run(query)</text>
+      <text x="16" y="86" fill="#6ee7b7" font-family="monospace" font-size="11">print(f"Key Concepts: {summary}")</text>
+      <text x="16" y="112" fill="#a5b4fc" font-family="monospace" font-size="11"># Interactive Student Q&amp;A Ready</text>
+    </g>
+  </g>
+</svg>
