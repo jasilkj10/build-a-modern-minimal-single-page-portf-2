@@ -43,8 +43,8 @@ const portfolioData = {
     batch: "2024 – 2028 (First Year)",
     location: "Thrissur, Kerala, India",
     email: "jasilkj.official@gmail.com",
-    // Path to your portrait photo (you can replace assets/avatar.svg with e.g. assets/jasil.jpg)
-    avatar: "assets/avatar.svg",
+    // Path to your portrait photo (you can replace assets/jasil.jpg with any image)
+    avatar: "assets/jasil.jpg",
     // URL or file path for your resume (e.g. assets/Jasil_KJ_Resume.pdf)
     resumeUrl: "#resume"
   },

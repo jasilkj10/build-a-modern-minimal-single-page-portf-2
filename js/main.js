@@ -104,8 +104,12 @@ function hydrateContent(data) {
   // --- 2. ABOUT SECTION ---
   const aboutAvatarImg = document.getElementById('about-avatar-img');
   if (aboutAvatarImg) {
-    aboutAvatarImg.src = data.personal.avatar || 'assets/avatar.svg';
+    aboutAvatarImg.src = data.personal.avatar || 'assets/jasil.jpg';
     aboutAvatarImg.alt = `${data.personal.name} — Portrait`;
+    aboutAvatarImg.onerror = function() {
+      this.onerror = null;
+      this.src = 'assets/avatar.svg';
+    };
   }
 
   const aboutBio = document.getElementById('about-bio');
