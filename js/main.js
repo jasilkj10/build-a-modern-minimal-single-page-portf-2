@@ -1,68 +1,95 @@
 /**
  * ====================================================================
- * PORTFOLIO APPLICATION LOGIC
+ * PORTFOLIO APPLICATION LOGIC — JASIL KJ
  * ====================================================================
- * - Dynamic data hydration from `portfolioData`
- * - ScrollSpy & Active navbar pill indicator
- * - Mobile responsive navigation menu
- * - Mouse spotlight glow tracking on glass cards
- * - Fade-up scroll animations (IntersectionObserver)
- * - Copy email to clipboard with animated toast
- * - Interactive contact form submission handler
+ * Features:
+ * - Dynamic data hydration from `portfolioData` (all personal config in js/data.js)
+ * - Intelligent ScrollSpy with active navbar pill indicator
+ * - Mobile responsive navigation drawer with backdrop blur
+ * - Dynamic mouse spotlight tracking on all glassmorphic cards
+ * - IntersectionObserver fade-up scroll reveal animations
+ * - Interactive copy-to-clipboard email button with animated toast
+ * - Interactive contact form with client validation, animated spinner, and toast feedback
+ * - Resume button handler supporting both local file paths and friendly instructions
  * ====================================================================
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const data = window.portfolioData;
   if (!data) {
-    console.warn('portfolioData not loaded yet.');
+    console.warn('portfolioData not loaded.');
     return;
   }
 
-  // 1. Populate dynamic content
+  // 1. Hydrate content from portfolioData
   hydrateContent(data);
 
   // 2. Initialize Lucide icons
-  if (typeof lucide !== 'undefined' && lucide.createIcons) {
-    lucide.createIcons();
-  }
+  refreshIcons();
 
-  // 3. Setup ScrollSpy & Navigation
+  // 3. Initialize Sticky Blurred Navbar & ScrollSpy
   initNavigation();
 
-  // 4. Setup Card Mouse Spotlight
+  // 4. Setup Mouse Spotlight tracking on Glass Cards
   initCardSpotlights();
 
   // 5. Setup Scroll Fade-in Animations
   initScrollAnimations();
 
-  // 6. Setup Interactive Contact Form & Copy
+  // 6. Setup Interactive Actions (Copy Email, Form, Resume)
   initInteractions(data);
 });
 
+// Also refresh icons once the window fully loads
+window.addEventListener('load', () => {
+  refreshIcons();
+});
+
 /**
- * Hydrates all personal portfolio content from portfolioData
+ * Re-scans the DOM and renders Lucide SVG icons safely
+ */
+function refreshIcons() {
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    try {
+      lucide.createIcons();
+    } catch (err) {
+      console.error('Error rendering icons:', err);
+    }
+  }
+}
+
+/**
+ * Populates all DOM elements dynamically from the central data.js file
  */
 function hydrateContent(data) {
-  // --- Hero Section ---
+  // --- 1. HERO SECTION ---
   const heroBadge = document.getElementById('hero-badge');
-  if (heroBadge) heroBadge.textContent = data.personal.badge;
+  if (heroBadge) {
+    heroBadge.textContent = data.personal.badge || '✦ Open to opportunities';
+  }
+
+  const heroBadgeSub = document.getElementById('hero-badge-sub');
+  if (heroBadgeSub) {
+    heroBadgeSub.textContent = data.personal.badgeSubtext || 'AI & CSE Student';
+  }
 
   const heroHeadline = document.getElementById('hero-headline');
   if (heroHeadline) {
     heroHeadline.innerHTML = `
       ${data.personal.headlinePart1} <br class="hidden sm:inline" />
-      <span class="text-gradient-purple font-extrabold tracking-tight">${data.personal.headlinePart2}</span>
+      ${data.personal.headlinePart2} <span class="text-gradient-purple font-black">${data.personal.headlineGradientWord || 'AI'}</span>
     `;
   }
 
   const heroSubtext = document.getElementById('hero-subtext');
-  if (heroSubtext) heroSubtext.textContent = data.personal.subtext;
+  if (heroSubtext) {
+    heroSubtext.textContent = data.personal.subtext;
+  }
 
-  const btnViewProjects = document.getElementById('hero-btn-projects');
-  if (btnViewProjects) {
-    btnViewProjects.textContent = data.personal.buttons.primary.text;
-    btnViewProjects.setAttribute('href', data.personal.buttons.primary.href);
+  const btnProjects = document.getElementById('hero-btn-projects');
+  if (btnProjects) {
+    btnProjects.textContent = data.personal.buttons.primary.text;
+    btnProjects.setAttribute('href', data.personal.buttons.primary.href);
   }
 
   const btnResume = document.getElementById('hero-btn-resume');
@@ -74,25 +101,31 @@ function hydrateContent(data) {
     btnResume.setAttribute('href', data.personal.buttons.secondary.href);
   }
 
-  // --- About Section ---
-  const aboutBioContainer = document.getElementById('about-bio');
-  if (aboutBioContainer) {
-    aboutBioContainer.innerHTML = data.about.bio
-      .map(p => `<p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-4">${p}</p>`)
+  // --- 2. ABOUT SECTION ---
+  const aboutAvatarImg = document.getElementById('about-avatar-img');
+  if (aboutAvatarImg) {
+    aboutAvatarImg.src = data.personal.avatar || 'assets/avatar.svg';
+    aboutAvatarImg.alt = `${data.personal.name} — Portrait`;
+  }
+
+  const aboutBio = document.getElementById('about-bio');
+  if (aboutBio) {
+    aboutBio.innerHTML = data.about.bio
+      .map(paragraph => `<p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-4">${paragraph}</p>`)
       .join('');
   }
 
-  const aboutFactsGrid = document.getElementById('about-quick-facts');
-  if (aboutFactsGrid) {
-    aboutFactsGrid.innerHTML = data.about.quickFacts
+  const quickFactsGrid = document.getElementById('about-quick-facts');
+  if (quickFactsGrid) {
+    quickFactsGrid.innerHTML = data.about.quickFacts
       .map(fact => `
-        <div class="glass-card rounded-2xl p-4 sm:p-5 flex items-start gap-4 hover:border-purple-500/40">
-          <div class="p-2.5 rounded-xl bg-purple-950/40 border border-purple-500/20 text-purple-400 shrink-0">
+        <div class="glass-card rounded-2xl p-4 sm:p-5 flex items-start gap-4">
+          <div class="p-2.5 rounded-xl bg-purple-950/50 border border-purple-500/20 text-purple-400 shrink-0">
             <i data-lucide="${fact.icon}" class="w-5 h-5"></i>
           </div>
           <div>
-            <div class="text-xs uppercase tracking-wider text-purple-300/80 font-medium">${fact.label}</div>
-            <div class="text-sm sm:text-base font-semibold text-white mt-0.5">${fact.value}</div>
+            <div class="text-[11px] uppercase tracking-wider text-purple-300/80 font-semibold">${fact.label}</div>
+            <div class="text-sm sm:text-base font-bold text-white mt-0.5">${fact.value}</div>
             <div class="text-xs text-slate-400 mt-0.5">${fact.sub}</div>
           </div>
         </div>
@@ -100,31 +133,31 @@ function hydrateContent(data) {
       .join('');
   }
 
-  // --- Skills Section ---
+  // --- 3. SKILLS SECTION ---
   const skillsCategories = document.getElementById('skills-categories');
   if (skillsCategories) {
     skillsCategories.innerHTML = data.skills.categories
       .map(category => `
         <div class="glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
           <div>
-            <div class="flex items-center gap-2 mb-6">
-              <span class="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_8px_#a855f7]"></span>
+            <div class="flex items-center gap-2.5 mb-6">
+              <span class="w-2.5 h-2.5 rounded-full bg-purple-400 shadow-[0_0_10px_#a855f7]"></span>
               <h3 class="text-lg font-bold text-white tracking-wide">${category.title}</h3>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-3.5">
               ${category.items
                 .map(item => `
-                  <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-purple-500/30 hover:bg-white/[0.04] transition-colors">
+                  <div class="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-purple-500/30 hover:bg-white/[0.04] transition-all">
                     <div class="flex items-center justify-between mb-1">
                       <div class="flex items-center gap-2.5">
-                        <i data-lucide="${item.icon}" class="w-4 h-4 text-purple-400"></i>
-                        <span class="font-medium text-white text-sm sm:text-base">${item.name}</span>
+                        <i data-lucide="${item.icon}" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                        <span class="font-semibold text-white text-sm sm:text-base">${item.name}</span>
                       </div>
-                      <span class="text-xs px-2.5 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 font-medium">
+                      <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 font-medium">
                         ${item.level}
                       </span>
                     </div>
-                    <p class="text-xs text-slate-400 pl-6">${item.note}</p>
+                    <p class="text-xs text-slate-400 pl-6 leading-relaxed">${item.note}</p>
                   </div>
                 `)
                 .join('')}
@@ -147,25 +180,25 @@ function hydrateContent(data) {
               ${item.progress}
             </span>
           </div>
-          <h4 class="text-base font-bold text-white mb-1">${item.name}</h4>
+          <h4 class="text-base font-bold text-white mb-1.5">${item.name}</h4>
           <p class="text-xs text-slate-300 leading-relaxed">${item.description}</p>
         </div>
       `)
       .join('');
   }
 
-  // --- Projects Section ---
+  // --- 4. PROJECTS SECTION ---
   const projectsGrid = document.getElementById('projects-grid');
   if (projectsGrid) {
     projectsGrid.innerHTML = data.projects.items
       .map(project => `
         <div class="glass-card rounded-3xl overflow-hidden flex flex-col group">
-          <!-- Project Preview Image Container -->
+          <!-- Preview Image Container -->
           <div class="relative w-full aspect-[16/10] overflow-hidden bg-gradient-to-b from-[#150f2e] to-[#080518] border-b border-white/5">
             <img 
               src="${project.image}" 
               alt="${project.title}" 
-              class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
               loading="lazy"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-[#090518] via-transparent to-transparent opacity-60"></div>
@@ -174,7 +207,7 @@ function hydrateContent(data) {
           <!-- Project Details -->
           <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between">
             <div>
-              <div class="text-xs font-semibold uppercase tracking-wider text-purple-400 mb-1.5">${project.tagline}</div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-purple-400 mb-1.5">${project.tagline}</div>
               <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-purple-300 transition-colors mb-3">
                 ${project.title}
               </h3>
@@ -223,18 +256,18 @@ function hydrateContent(data) {
       .join('');
   }
 
-  // --- Education & Timeline Section ---
+  // --- 5. EDUCATION & TIMELINE SECTION ---
   const educationTimeline = document.getElementById('education-timeline');
   if (educationTimeline) {
     educationTimeline.innerHTML = data.education.timeline
       .map((item, index) => `
         <div class="relative pl-8 sm:pl-10 pb-12 last:pb-2 group">
-          <!-- Connecting vertical line -->
+          <!-- Connecting Line -->
           ${index !== data.education.timeline.length - 1 ? `
             <div class="absolute left-3 top-3.5 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/50 via-purple-500/20 to-transparent"></div>
           ` : ''}
 
-          <!-- Glowing timeline dot -->
+          <!-- Glowing Marker Dot -->
           <div class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-purple-500 ring-4 ring-purple-950/80 shadow-[0_0_12px_#a855f7]"></div>
 
           <div class="glass-card rounded-2xl p-6 sm:p-7 hover:border-purple-500/40">
@@ -258,7 +291,7 @@ function hydrateContent(data) {
       .join('');
   }
 
-  // --- Contact Section & Socials ---
+  // --- 6. CONTACT SECTION ---
   const contactEmailBtn = document.getElementById('contact-email-btn');
   if (contactEmailBtn) {
     contactEmailBtn.textContent = data.contact.email;
@@ -281,7 +314,7 @@ function hydrateContent(data) {
       .join('');
   }
 
-  // Footer copyright
+  // --- 7. FOOTER SECTION ---
   const footerCopyright = document.getElementById('footer-copyright');
   if (footerCopyright) {
     footerCopyright.textContent = data.footer.copyright;
@@ -289,7 +322,7 @@ function hydrateContent(data) {
 }
 
 /**
- * Initializes ScrollSpy and active navigation state
+ * Initializes Sticky Navbar, Mobile Menu, and Robust ScrollSpy
  */
 function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
@@ -297,15 +330,15 @@ function initNavigation() {
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  // Mobile menu toggle
+  // Mobile Menu Toggle
   if (mobileToggle && mobileMenu) {
     mobileToggle.addEventListener('click', () => {
       const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-      mobileToggle.setAttribute('aria-expanded', !isExpanded);
+      mobileToggle.setAttribute('aria-expanded', String(!isExpanded));
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Close mobile menu when clicking any link
+    // Close menu when clicking link
     document.querySelectorAll('#mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
@@ -314,31 +347,49 @@ function initNavigation() {
     });
   }
 
-  // ScrollSpy with IntersectionObserver
-  const observerOptions = {
-    root: null,
-    rootMargin: '-30% 0px -60% 0px',
-    threshold: 0
-  };
+  // ScrollSpy Highlight Handler
+  function updateActiveNavLink() {
+    const scrollPosition = window.scrollY + 200;
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('text-white', 'bg-white/10');
-            link.classList.remove('text-slate-400');
-          } else {
-            link.classList.remove('text-white', 'bg-white/10');
-            link.classList.add('text-slate-400');
-          }
-        });
+    // Check if scrolled to bottom
+    if (window.scrollY + windowHeight >= documentHeight - 50) {
+      setActiveNav('contact');
+      return;
+    }
+
+    // Check if near top
+    if (window.scrollY < 200) {
+      setActiveNav('hero');
+      return;
+    }
+
+    // Check current section
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        setActiveNav(id);
       }
     });
-  }, observerOptions);
+  }
 
-  sections.forEach(section => observer.observe(section));
+  function setActiveNav(id) {
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === `#${id}`) {
+        link.classList.add('text-white', 'bg-white/10');
+        link.classList.remove('text-slate-400');
+      } else {
+        link.classList.remove('text-white', 'bg-white/10');
+        link.classList.add('text-slate-400');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+  updateActiveNavLink();
 }
 
 /**
@@ -371,38 +422,45 @@ function initScrollAnimations() {
         }
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
   fadeElements.forEach(el => observer.observe(el));
 }
 
 /**
- * Interactive actions: copy email, contact form, toasts
+ * Interactive actions: copy email, contact form, toasts, resume
  */
 function initInteractions(data) {
-  // Copy Email to clipboard
+  // 1. Copy Email to Clipboard
   const copyBtn = document.getElementById('copy-email-trigger');
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(data.personal.email).then(() => {
-        showToast(`Email copied: ${data.personal.email}`);
-      }).catch(() => {
-        showToast(`Email: ${data.personal.email}`);
-      });
+      const email = data.contact.email || data.personal.email;
+      navigator.clipboard.writeText(email)
+        .then(() => {
+          showToast(`Email copied: ${email}`);
+        })
+        .catch(() => {
+          showToast(`Email: ${email}`);
+        });
     });
   }
 
-  // Download Resume button feedback
+  // 2. Resume Button Handler
   const resumeBtns = document.querySelectorAll('a[href="#resume"]');
   resumeBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', e => {
+      if (data.personal.resumeUrl && data.personal.resumeUrl !== '#resume') {
+        // Let normal browser link navigation or download proceed
+        return;
+      }
       e.preventDefault();
-      showToast('Resume link clicked! (Add your resume PDF in js/data.js)');
+      showToast('Resume linked! (Add your PDF to js/data.js in personal.resumeUrl)');
     });
   });
 
-  // Contact form submission
+  // 3. Interactive Contact Form Submission
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', e => {
@@ -417,8 +475,7 @@ function initInteractions(data) {
         return;
       }
 
-      // Animated button loading feedback
-      const originalText = submitBtn.innerHTML;
+      const originalHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
         <span class="inline-flex items-center gap-2">
@@ -432,16 +489,17 @@ function initInteractions(data) {
 
       setTimeout(() => {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
+        submitBtn.innerHTML = originalHtml;
         contactForm.reset();
-        showToast("Message sent! Jasil will get back to you soon. 🚀");
-      }, 900);
+        showToast("Message sent! Jasil will reply promptly. 🚀");
+        refreshIcons();
+      }, 800);
     });
   }
 }
 
 /**
- * Shows an animated floating toast message
+ * Animated floating toast alert
  */
 function showToast(message) {
   let toast = document.getElementById('toast-notification');
@@ -452,7 +510,7 @@ function showToast(message) {
   }
 
   toast.innerHTML = `
-    <span class="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_8px_#a855f7]"></span>
+    <span class="w-2.5 h-2.5 rounded-full bg-purple-400 shadow-[0_0_8px_#a855f7]"></span>
     <span>${message}</span>
   `;
 
