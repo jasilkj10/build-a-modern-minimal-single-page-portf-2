@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jasil KJ — AI &amp; CSE Student | Portfolio</title>
+  <meta name="description" content="Portfolio of Jasil KJ, a first-year B.Tech CSE (AI) student at Thejus Engineering College, Thrissur. Passionate about AI, code, and building real projects." />
+  <meta name="keywords" content="Jasil KJ, Portfolio, AI, Machine Learning, Thejus Engineering College, Computer Science, Thrissur, Kerala, Web Development" />
+  <meta name="author" content="Jasil KJ" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jasil KJ — AI &amp; CSE Student | Portfolio" />
+  <meta property="og:description" content="Building Smarter Things with AI. B.Tech CSE (AI) at Thejus Engineering College, Thrissur." />
+
+  <!-- Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#05030F',
+              900: '#090518',
+              800: '#110b2a',
+            },
+            purple: {
+              400: '#c084fc',
+              500: '#a855f7',
+              600: '#9333ea',
+              950: '#2e1065',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js for 3D Hero Torus Knot -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-[#05030F] text-slate-100 min-h-screen selection:bg-purple-500/30 selection:text-white relative">
+
+  <!-- Ambient Glow Elements -->
+  <div class="ambient-glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow-middle" aria-hidden="true"></div>
+  <div class="ambient-glow-bottom" aria-hidden="true"></div>
+
+  <!-- FLOATING CENTERED NAVBAR -->
+  <header class="fixed top-5 left-0 right-0 z-50 px-4 sm:px-6 pointer-events-none">
+    <div class="max-w-4xl mx-auto flex items-center justify-between pointer-events-auto">
+      <nav class="w-full glass-nav rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between border border-white/10 shadow-2xl transition-all">
+        
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-2 group" aria-label="Jasil KJ Home">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-violet-400 flex items-center justify-center font-bold text-xs text-white shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:scale-105 transition-transform">
+            JK
+          </div>
+          <span class="font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-purple-300 transition-colors">
+            Jasil<span class="text-purple-400">.</span>KJ
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-1 text-sm font-medium">
+          <a href="#hero" class="nav-link px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/[0.06] transition-all">Home</a>
+          <a href="#about" class="nav-link px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/[0.06] transition-all">About</a>
+          <a href="#skills" class="nav-link px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/[0.06] transition-all">Skills</a>
+          <a href="#projects" class="nav-link px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/[0.06] transition-all">Projects</a>
+          <a href="#education" class="nav-link px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/[0.06] transition-all">Education</a>
+          <a href="#contact" class="nav-link px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/[0.06] transition-all">Contact</a>
+        </div>
+
+        <!-- Right Pill CTA & Mobile Menu Button -->
+        <div class="flex items-center gap-2">
+          <a href="#contact" class="btn-primary hidden sm:inline-flex px-4 py-1.5 text-xs sm:text-sm font-semibold items-center gap-1.5 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            <span>Get in touch</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button 
+            id="mobile-menu-toggle" 
+            aria-label="Toggle navigation menu" 
+            aria-expanded="false" 
+            class="md:hidden p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden max-w-sm mx-auto mt-2 pointer-events-auto">
+      <div class="glass-card rounded-3xl p-4 border border-white/15 shadow-2xl backdrop-blur-2xl flex flex-col gap-1 text-center font-medium text-sm">
+        <a href="#hero" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-colors">Home</a>
+        <a href="#about" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-colors">About</a>
+        <a href="#skills" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-colors">Skills</a>
+        <a href="#projects" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-colors">Projects</a>
+        <a href="#education" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-colors">Education</a>
+        <a href="#contact" class="px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-colors">Contact</a>
+        <a href="#contact" class="btn-primary mt-2 py-2.5 text-xs font-semibold">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="relative z-10">
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="relative min-h-screen pt-32 sm:pt-40 pb-20 flex flex-col items-center justify-between overflow-hidden">
+      
+      <!-- Center Content -->
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center z-10 flex flex-col items-center">
+        
+        <!-- Badge -->
+        <div class="fade-up-element inline-flex items-center gap-2 glass-badge px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-8">
+          <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
+          <span id="hero-badge">✦ AI &amp; CSE Student</span>
+          <span class="text-purple-400/60">•</span>
+          <span class="text-purple-300 text-xs">Thejus Engg College</span>
+        </div>
+
+        <!-- Main Bold Headline -->
+        <h1 id="hero-headline" class="fade-up-element text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.08] max-w-4xl mb-6">
+          Hi, I'm Jasil KJ <br class="hidden sm:inline" />
+          <span class="text-gradient-purple font-extrabold tracking-tight">Building Smarter Things with AI</span>
+        </h1>
+
+        <!-- Subtext -->
+        <p id="hero-subtext" class="fade-up-element text-slate-300 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed mb-10 font-normal">
+          First-year B.Tech CSE (AI) student at Thejus Engineering College, Thrissur, passionate about AI, code, and building real projects.
+        </p>
+
+        <!-- Pill-shaped Buttons -->
+        <div class="fade-up-element flex flex-wrap items-center justify-center gap-4 mb-8">
+          <!-- Primary: Solid White -->
+          <a id="hero-btn-projects" href="#projects" class="btn-primary px-7 py-3.5 text-sm sm:text-base font-semibold inline-flex items-center gap-2">
+            View Projects
+          </a>
+
+          <!-- Secondary: Dark Translucent -->
+          <a id="hero-btn-resume" href="#resume" class="btn-secondary px-7 py-3.5 text-sm sm:text-base font-medium inline-flex items-center gap-2">
+            <i data-lucide="file-text" class="w-4 h-4 text-purple-300"></i>
+            <span>Download Resume</span>
+          </a>
+        </div>
+
+        <!-- Quick Status Pill -->
+        <div class="fade-up-element inline-flex items-center gap-2 text-xs text-slate-400 bg-white/[0.03] border border-white/5 px-4 py-1.5 rounded-full backdrop-blur-md">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Open to hackathons, projects &amp; tech collaborations</span>
+        </div>
+      </div>
+
+      <!-- GLOSSY 3D GLASS / CHROME PURPLE TORUS KNOT CONTAINER -->
+      <!-- Positioned at the bottom of the hero, partly cropped -->
+      <div class="relative w-full h-[360px] sm:h-[440px] md:h-[500px] mt-6 pointer-events-auto flex items-end justify-center overflow-hidden">
+        <div id="three-hero-container" class="w-full h-full relative cursor-grab active:cursor-grabbing"></div>
+        
+        <!-- Soft gradient fade mask at bottom of hero -->
+        <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#05030F] via-[#05030F]/80 to-transparent pointer-events-none z-10"></div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT SECTION -->
+    <section id="about" class="py-24 sm:py-32 px-4 sm:px-6 relative">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="fade-up-element text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <span class="glass-badge px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">
+            About Me
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-2">
+            Curious Mind, Focused on <span class="text-gradient-purple">Intelligent Code</span>
+          </h2>
+        </div>
+
+        <!-- About Layout: Photo + Bio & Quick Facts -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Portrait Photo in Rounded Frame with Soft Purple Glow -->
+          <div class="fade-up-element lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-sm aspect-[4/5] rounded-3xl p-2 bg-gradient-to-b from-purple-500/20 via-white/5 to-transparent border border-purple-500/30 shadow-[0_0_60px_rgba(168,85,247,0.18)] group">
+              <!-- Internal Frame -->
+              <div class="w-full h-full rounded-[22px] overflow-hidden relative bg-[#090518]">
+                <img 
+                  id="about-avatar-img" 
+                  src="assets/avatar.svg" 
+                  alt="Jasil KJ — Portrait" 
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#05030F] via-transparent to-transparent opacity-40"></div>
+                
+                <!-- Floating Info Badge on Photo -->
+                <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl glass-nav border border-white/10 flex items-center justify-between">
+                  <div>
+                    <div class="text-xs text-purple-300 font-medium">B.Tech CSE (AI)</div>
+                    <div class="text-sm font-bold text-white">Thejus Engg College</div>
+                  </div>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio & Quick Facts -->
+          <div class="fade-up-element lg:col-span-7 flex flex-col justify-center">
+            
+            <!-- Bio Paragraphs -->
+            <div id="about-bio" class="prose prose-invert mb-8">
+              <!-- Populated by data.js -->
+            </div>
+
+            <!-- Quick Facts Grid -->
+            <div id="about-quick-facts" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Populated by data.js -->
+            </div>
+
+            <!-- Download CV / Action row -->
+            <div class="mt-8 flex items-center gap-4">
+              <a href="#contact" class="btn-primary px-6 py-2.5 text-xs sm:text-sm font-semibold inline-flex items-center gap-2">
+                <span>Let's talk</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a href="#resume" class="btn-secondary px-6 py-2.5 text-xs sm:text-sm font-medium inline-flex items-center gap-2">
+                <i data-lucide="download" class="w-4 h-4 text-purple-400"></i>
+                <span>Resume (PDF)</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SKILLS SECTION -->
+    <section id="skills" class="py-24 sm:py-32 px-4 sm:px-6 relative">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="fade-up-element text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <span class="glass-badge px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">
+            Skills &amp; Tech Stack
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-2">
+            Tools for <span class="text-gradient-purple">Building Intelligence</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-4">
+            Hands-on technical skills spanning core computer science, Python data science libraries, and modern developer tooling.
+          </p>
+        </div>
+
+        <!-- 3 Categorized Glass Cards -->
+        <div id="skills-categories" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <!-- Populated by data.js -->
+        </div>
+
+        <!-- "Currently Learning" Row -->
+        <div class="fade-up-element mt-12">
+          <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="compass" class="w-5 h-5 text-purple-400"></i>
+            <h3 class="text-lg font-bold text-white tracking-wide">Currently Deep-Diving Into</h3>
+            <span class="text-xs text-purple-300/80 bg-purple-950/40 border border-purple-500/20 px-2.5 py-0.5 rounded-full">Active Focus</span>
+          </div>
+
+          <div id="currently-learning-row" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <!-- Populated by data.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. PROJECTS SECTION -->
+    <section id="projects" class="py-24 sm:py-32 px-4 sm:px-6 relative">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="fade-up-element text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <span class="glass-badge px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">
+            Featured Projects
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-2">
+            Turning Ideas Into <span class="text-gradient-purple">Working Software</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-4">
+            From intelligent LLM agents to real-time computer vision models and interactive 3D interfaces.
+          </p>
+        </div>
+
+        <!-- 3 Glass Cards for Projects -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Populated by data.js -->
+        </div>
+
+        <!-- GitHub Profile Callout -->
+        <div class="fade-up-element mt-14 text-center">
+          <a 
+            href="https://github.com/jasilkj" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-secondary px-7 py-3 text-sm font-medium inline-flex items-center gap-2 group hover:border-purple-400/50"
+          >
+            <i data-lucide="github" class="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform"></i>
+            <span>Explore more repositories on GitHub</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. EDUCATION & TIMELINE SECTION -->
+    <section id="education" class="py-24 sm:py-32 px-4 sm:px-6 relative">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="fade-up-element text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <span class="glass-badge px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">
+            Education &amp; Milestones
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-2">
+            Academic <span class="text-gradient-purple">Foundation</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-4">
+            My educational background and learning path at Thejus Engineering College, Thrissur.
+          </p>
+        </div>
+
+        <!-- Vertical Timeline -->
+        <div id="education-timeline" class="fade-up-element">
+          <!-- Populated by data.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. CONTACT SECTION -->
+    <section id="contact" class="py-24 sm:py-32 px-4 sm:px-6 relative">
+      <div class="max-w-5xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="fade-up-element text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <span class="glass-badge px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">
+            Get In Touch
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mt-2">
+            Let's Start a <span class="text-gradient-purple">Conversation</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-4">
+            Whether you want to collaborate on an AI project, invite me to a hackathon, or discuss technology — my inbox is always open.
+          </p>
+        </div>
+
+        <!-- Contact Content Grid: Info & Form -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left Column: Quick Connect Card -->
+          <div class="fade-up-element lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8">
+            <h3 class="text-xl font-bold text-white mb-2">Connect Directly</h3>
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+              Based in Thrissur, Kerala. Ready to communicate via email, LinkedIn, or GitHub.
+            </p>
+
+            <!-- Direct Email Button with Copy -->
+            <div class="mb-6">
+              <label class="block text-xs uppercase tracking-wider text-purple-300/80 font-medium mb-2">Email Address</label>
+              <div class="flex items-center gap-2">
+                <button 
+                  id="copy-email-trigger" 
+                  type="button" 
+                  class="flex-1 glass-card px-4 py-3 rounded-2xl flex items-center justify-between text-left text-sm text-slate-200 hover:border-purple-500/40 transition-colors group"
+                >
+                  <span id="contact-email-btn" class="truncate font-mono text-xs sm:text-sm">jasilkj.official@gmail.com</span>
+                  <i data-lucide="copy" class="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform shrink-0"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- College & Location Badge -->
+            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 mb-8">
+              <div class="flex items-center gap-3 text-xs text-slate-300">
+                <i data-lucide="map-pin" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                <span>Thrissur, Kerala, India</span>
+              </div>
+              <div class="flex items-center gap-3 text-xs text-slate-300 mt-2">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                <span>Thejus Engineering College (KTU)</span>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-purple-300/80 font-medium mb-3">Social Profiles</label>
+              <div id="contact-social-links" class="flex items-center gap-3">
+                <!-- Populated by data.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Contact Form -->
+          <div class="fade-up-element lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8">
+            <h3 class="text-xl font-bold text-white mb-2">Send a Message</h3>
+            <p class="text-slate-300 text-sm mb-6">Fill in the details below and I will get back to you promptly.</p>
+
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="form-name" class="block text-xs font-medium text-slate-300 mb-1.5">Your Name *</label>
+                  <input 
+                    type="text" 
+                    id="form-name" 
+                    name="name" 
+                    required 
+                    placeholder="Alex Morgan" 
+                    class="w-full glass-input px-4 py-3 rounded-2xl text-sm placeholder:text-slate-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label for="form-email" class="block text-xs font-medium text-slate-300 mb-1.5">Your Email *</label>
+                  <input 
+                    type="email" 
+                    id="form-email" 
+                    name="email" 
+                    required 
+                    placeholder="alex@example.com" 
+                    class="w-full glass-input px-4 py-3 rounded-2xl text-sm placeholder:text-slate-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="form-subject" class="block text-xs font-medium text-slate-300 mb-1.5">Subject</label>
+                <input 
+                  type="text" 
+                  id="form-subject" 
+                  name="subject" 
+                  placeholder="AI Project Collaboration / Hackathon Inquiry" 
+                  class="w-full glass-input px-4 py-3 rounded-2xl text-sm placeholder:text-slate-500 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label for="form-message" class="block text-xs font-medium text-slate-300 mb-1.5">Message *</label>
+                <textarea 
+                  id="form-message" 
+                  name="message" 
+                  rows="4" 
+                  required 
+                  placeholder="Hi Jasil, I came across your portfolio and would love to discuss..." 
+                  class="w-full glass-input px-4 py-3 rounded-2xl text-sm placeholder:text-slate-500 focus:outline-none resize-none"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="btn-primary w-full py-3.5 text-sm font-semibold flex items-center justify-center gap-2 mt-2"
+              >
+                <span>Send Message</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7. FOOTER -->
+  <footer class="relative z-10 border-t border-white/10 py-12 px-4 sm:px-6 bg-[#030209]">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Brand & Copyright -->
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-600 to-violet-400 flex items-center justify-center font-bold text-[10px] text-white">
+          JK
+        </div>
+        <div class="text-xs text-slate-400">
+          <span id="footer-copyright" class="font-medium text-slate-300">© 2026 Jasil KJ</span>
+          <span class="mx-1.5">•</span>
+          <span>B.Tech CSE (AI) @ Thejus Engg College</span>
+        </div>
+      </div>
+
+      <!-- Quick Nav Links in Footer -->
+      <div class="flex flex-wrap items-center gap-6 text-xs text-slate-400">
+        <a href="#hero" class="hover:text-purple-300 transition-colors">Hero</a>
+        <a href="#about" class="hover:text-purple-300 transition-colors">About</a>
+        <a href="#skills" class="hover:text-purple-300 transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-purple-300 transition-colors">Projects</a>
+        <a href="#education" class="hover:text-purple-300 transition-colors">Education</a>
+        <a href="#contact" class="hover:text-purple-300 transition-colors">Contact</a>
+      </div>
+
+      <!-- Back to top button -->
+      <a 
+        href="#hero" 
+        class="p-2.5 rounded-full glass-card text-slate-400 hover:text-white hover:border-purple-500/40 transition-colors" 
+        aria-label="Back to top"
+      >
+        <i data-lucide="arrow-up" class="w-4 h-4"></i>
+      </a>
+
+    </div>
+  </footer>
+
+  <!-- Floating Toast Notification Element -->
+  <div id="toast-notification" role="status" aria-live="polite"></div>
+
+  <!-- APPLICATION SCRIPTS -->
+  <!-- 1. Central data configuration file -->
+  <script src="js/data.js"></script>
+  <!-- 2. Interactive Three.js 3D glass torus knot at hero bottom -->
+  <script src="js/three-hero.js"></script>
+  <!-- 3. Application logic, ScrollSpy, mobile menu, animations -->
+  <script src="js/main.js"></script>
+</body>
+</html>
