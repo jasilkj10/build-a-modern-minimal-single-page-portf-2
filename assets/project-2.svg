@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p2Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140a24" />
+      <stop offset="50%" stop-color="#090518" />
+      <stop offset="100%" stop-color="#04020a" />
+    </linearGradient>
+    <radialGradient id="p2Glow" cx="30%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="p2Line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" rx="16" fill="url(#p2Bg)" />
+  <circle cx="200" cy="190" r="180" fill="url(#p2Glow)" />
+
+  <g transform="translate(40, 40)">
+    <!-- Header Window -->
+    <rect width="520" height="42" rx="10" fill="#150f2e" stroke="#2c1e57" stroke-width="1" />
+    <circle cx="25" cy="21" r="5" fill="#ef4444" opacity="0.8" />
+    <circle cx="45" cy="21" r="5" fill="#f59e0b" opacity="0.8" />
+    <circle cx="65" cy="21" r="5" fill="#10b981" opacity="0.8" />
+    <text x="260" y="26" text-anchor="middle" fill="#c084fc" font-family="monospace" font-size="12">vision_detector.py — OpenCV + CNN Classification</text>
+
+    <!-- Main Viewport -->
+    <rect y="54" width="520" height="246" rx="12" fill="#0d081f" stroke="#231749" stroke-width="1" />
+
+    <!-- Detection Camera Feed Simulation -->
+    <rect x="24" y="74" width="300" height="206" rx="8" fill="#120c29" stroke="#312260" stroke-width="1" />
+    <!-- Grid scan lines -->
+    <g stroke="#6366f1" stroke-width="0.5" opacity="0.25">
+      <line x1="24" y1="120" x2="324" y2="120" />
+      <line x1="24" y1="170" x2="324" y2="170" />
+      <line x1="24" y1="220" x2="324" y2="220" />
+      <line x1="100" y1="74" x2="100" y2="280" />
+      <line x1="174" y1="74" x2="174" y2="280" />
+      <line x1="250" y1="74" x2="250" y2="280" />
+    </g>
+
+    <!-- Bounding Box -->
+    <rect x="80" y="110" width="160" height="130" rx="4" fill="none" stroke="#22d3ee" stroke-width="2" stroke-dasharray="4 3" />
+    <!-- Corner brackets -->
+    <path d="M 76 120 L 76 106 L 90 106" fill="none" stroke="#a855f7" stroke-width="3" />
+    <path d="M 244 120 L 244 106 L 230 106" fill="none" stroke="#a855f7" stroke-width="3" />
+    <path d="M 76 230 L 76 244 L 90 244" fill="none" stroke="#a855f7" stroke-width="3" />
+    <path d="M 244 230 L 244 244 L 230 244" fill="none" stroke="#a855f7" stroke-width="3" />
+
+    <!-- Detection Tag -->
+    <rect x="80" y="90" width="118" height="20" rx="4" fill="#06b6d4" />
+    <text x="86" y="104" fill="#030712" font-family="sans-serif" font-weight="bold" font-size="10">Target: Face 99.2%</text>
+
+    <!-- Side Metrics Panel -->
+    <g transform="translate(340, 74)">
+      <rect width="156" height="60" rx="8" fill="#140d2d" stroke="#2e1f5c" stroke-width="1" />
+      <text x="12" y="22" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">FRAME RATE</text>
+      <text x="12" y="44" fill="#38bdf8" font-family="monospace" font-size="18" font-weight="bold">60.0 FPS</text>
+    </g>
+
+    <g transform="translate(340, 146)">
+      <rect width="156" height="60" rx="8" fill="#140d2d" stroke="#2e1f5c" stroke-width="1" />
+      <text x="12" y="22" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">CONFIDENCE</text>
+      <text x="12" y="44" fill="#a855f7" font-family="monospace" font-size="18" font-weight="bold">0.984 IoU</text>
+    </g>
+
+    <g transform="translate(340, 218)">
+      <rect width="156" height="62" rx="8" fill="#140d2d" stroke="#2e1f5c" stroke-width="1" />
+      <text x="12" y="22" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">BACKBONE</text>
+      <text x="12" y="44" fill="#34d399" font-family="monospace" font-size="13" font-weight="bold">MobileNetV2</text>
+    </g>
+  </g>
+</svg>

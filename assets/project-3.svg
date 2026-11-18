@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p3Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140a2c" />
+      <stop offset="50%" stop-color="#090518" />
+      <stop offset="100%" stop-color="#05030f" />
+    </linearGradient>
+    <radialGradient id="p3Glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="35%" stop-color="#c084fc" />
+      <stop offset="70%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" rx="16" fill="url(#p3Bg)" />
+  <circle cx="300" cy="190" r="170" fill="url(#p3Glow)" />
+
+  <g transform="translate(40, 40)">
+    <!-- Header Window -->
+    <rect width="520" height="42" rx="10" fill="#150f2e" stroke="#2c1e57" stroke-width="1" />
+    <circle cx="25" cy="21" r="5" fill="#ef4444" opacity="0.8" />
+    <circle cx="45" cy="21" r="5" fill="#f59e0b" opacity="0.8" />
+    <circle cx="65" cy="21" r="5" fill="#10b981" opacity="0.8" />
+    <text x="260" y="26" text-anchor="middle" fill="#e9d5ff" font-family="monospace" font-size="12">portfolio_three_scene.js — WebGL Glass Mesh &amp; Shaders</text>
+
+    <!-- Main Viewport -->
+    <rect y="54" width="520" height="246" rx="12" fill="#0c071d" stroke="#221644" stroke-width="1" />
+
+    <!-- 3D Glass Torus Knot Illustration -->
+    <g transform="translate(260, 175)">
+      <!-- Outer Glow Rings -->
+      <ellipse cx="0" cy="0" rx="110" ry="45" fill="none" stroke="#a855f7" stroke-width="1.5" opacity="0.4" transform="rotate(-20)" />
+      <ellipse cx="0" cy="0" rx="90" ry="36" fill="none" stroke="#60a5fa" stroke-width="1.5" opacity="0.5" transform="rotate(35)" />
+      
+      <!-- Knot Curves -->
+      <path d="M -70 20 C -50 -60 50 -60 70 20 C 85 70 -85 70 -70 20 Z" fill="none" stroke="url(#chromeGrad)" stroke-width="26" stroke-linecap="round" opacity="0.75" />
+      <path d="M -40 -30 C -80 0 -40 50 30 20 C 70 -10 30 -60 -40 -30 Z" fill="none" stroke="#f472b6" stroke-width="14" stroke-linecap="round" opacity="0.6" />
+      <circle cx="-10" cy="-5" r="28" fill="#c084fc" opacity="0.3" filter="blur(6px)" />
+    </g>
+
+    <!-- UI Overlay Elements -->
+    <g transform="translate(24, 78)">
+      <rect width="130" height="28" rx="14" fill="#1d123b" stroke="#8b5cf6" stroke-width="1" />
+      <text x="14" y="18" fill="#e9d5ff" font-family="sans-serif" font-size="11" font-weight="600">✦ 60 FPS WebGL</text>
+    </g>
+
+    <g transform="translate(366, 78)">
+      <rect width="130" height="28" rx="14" fill="#1d123b" stroke="#38bdf8" stroke-width="1" />
+      <text x="14" y="18" fill="#bae6fd" font-family="sans-serif" font-size="11" font-weight="600">✦ Glassmorphic UI</text>
+    </g>
+
+    <g transform="translate(24, 250)">
+      <rect width="472" height="34" rx="8" fill="#150e2c" stroke="#2f1d5e" stroke-width="1" />
+      <text x="16" y="22" fill="#c4b5fd" font-family="system-ui, sans-serif" font-size="12">Interactive Glass Torus Knot • Dynamic Light Shading • Zero Dependencies</text>
+    </g>
+  </g>
+</svg>
