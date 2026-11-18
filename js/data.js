@@ -1,42 +1,63 @@
 /**
  * ====================================================================
- * PORTFOLIO DATA CONFIGURATION
+ * PORTFOLIO DATA CONFIGURATION — JASIL KJ
  * ====================================================================
- * Hi Jasil! All personal information, projects, skills, education,
- * and contact links are located right here. Edit any field below to
- * automatically update the website.
+ * Hi Jasil! 👋
+ * All your personal info, projects, skills, education, and contact details
+ * are configured right here in this one file.
+ *
+ * Any changes you make here will automatically reflect across the entire site!
+ * ====================================================================
  */
 
 const portfolioData = {
-  // Personal & Hero Info
+  // ------------------------------------------------------------------
+  // 1. PERSONAL & HERO SECTION CONFIGURATION
+  // ------------------------------------------------------------------
   personal: {
     name: "Jasil KJ",
     role: "AI & CSE Student",
+    // Hero pill badge above headline
+    badge: "✦ Open to opportunities",
+    badgeSubtext: "AI & CSE Student",
+    // Main headline split: Part 1 + Part 2 + Radiant Gradient Word
     headlinePart1: "Hi, I'm Jasil KJ",
-    headlinePart2: "Building Smarter Things with AI",
+    headlinePart2: "Building Smarter Things with",
+    headlineGradientWord: "AI",
+    // Hero description subtext
     subtext: "First-year B.Tech CSE (AI) student at Thejus Engineering College, Thrissur, passionate about AI, code, and building real projects.",
-    badge: "✦ AI & CSE Student",
-    availabilityBadge: "✦ Open to opportunities",
-    location: "Thrissur, Kerala, India",
-    college: "Thejus Engineering College, Thrissur",
-    degree: "B.Tech CSE (Artificial Intelligence)",
-    batch: "2024 – 2028 (1st Year)",
-    email: "jasilkj.official@gmail.com",
-    avatar: "assets/avatar.svg",
-    resumeUrl: "#resume",
+    // Action buttons
     buttons: {
-      primary: { text: "View Projects", href: "#projects" },
-      secondary: { text: "Download Resume", href: "#resume" }
-    }
+      primary: {
+        text: "View Projects",
+        href: "#projects"
+      },
+      secondary: {
+        text: "Download Resume",
+        href: "#resume"
+      }
+    },
+    // Key facts
+    college: "Thejus Engineering College, Thrissur",
+    branch: "B.Tech Computer Science & Engineering (Artificial Intelligence)",
+    batch: "2024 – 2028 (First Year)",
+    location: "Thrissur, Kerala, India",
+    email: "jasilkj.official@gmail.com",
+    // Path to your portrait photo (you can replace assets/avatar.svg with e.g. assets/jasil.jpg)
+    avatar: "assets/avatar.svg",
+    // URL or file path for your resume (e.g. assets/Jasil_KJ_Resume.pdf)
+    resumeUrl: "#resume"
   },
 
-  // About Section Details
+  // ------------------------------------------------------------------
+  // 2. ABOUT SECTION CONFIGURATION
+  // ------------------------------------------------------------------
   about: {
-    sectionBadge: "About Me",
-    heading: "Passionate About Machine Learning, Code & Building Real Solutions",
+    badge: "About Me",
+    heading: "Curious Mind, Focused on Intelligent Code",
     bio: [
-      "I am a first-year Computer Science & Engineering (Artificial Intelligence) student at Thejus Engineering College, Thrissur. My journey started with curiosity about how machines learn, reason, and solve complex human problems.",
-      "Right now, I am building strong fundamentals in algorithms, C programming, and Python data science libraries. I love bridging theoretical AI concepts with clean, functional code, constantly experimenting with generative AI, neural networks, and interactive applications."
+      "I am a first-year Computer Science & Engineering (Artificial Intelligence) student at Thejus Engineering College, Thrissur. My fascination with technology began with a simple question: how can software observe data, identify patterns, and make intelligent decisions in the real world?",
+      "Currently, I am developing strong foundations in C programming, data structures, and Python's data science ecosystem. From writing clean terminal scripts to training computer vision classifiers and building AI-assisted web apps, I love turning theoretical algorithms into working, beautiful software."
     ],
     quickFacts: [
       {
@@ -47,7 +68,7 @@ const portfolioData = {
       },
       {
         icon: "cpu",
-        label: "Specialization",
+        label: "Branch & Major",
         value: "B.Tech CSE (AI)",
         sub: "Artificial Intelligence Focus"
       },
@@ -59,92 +80,97 @@ const portfolioData = {
       },
       {
         icon: "calendar",
-        label: "Graduation Batch",
+        label: "Batch",
         value: "Class of 2028",
-        sub: "First Year Student"
+        sub: "1st Year Undergraduate"
       },
       {
         icon: "sparkles",
         label: "Core Interests",
         value: "Machine Learning & AI",
-        sub: "Full-Stack Dev & Open Source"
+        sub: "Web Development & Open Source"
       },
       {
         icon: "activity",
-        label: "Status",
-        value: "Active & Learning",
-        sub: "Hackathons & Collaborations"
+        label: "Current Status",
+        value: "Open to Collaborations",
+        sub: "Hackathons, Projects & Mentorship"
       }
     ]
   },
 
-  // Skills Section Details
+  // ------------------------------------------------------------------
+  // 3. SKILLS SECTION CONFIGURATION
+  // ------------------------------------------------------------------
   skills: {
-    sectionBadge: "Skills & Tech",
-    heading: "Technologies & Tools I Work With",
-    subtext: "Foundations I have developed through coursework, personal projects, and continuous self-study.",
+    badge: "Skills & Tech Stack",
+    heading: "Technologies I Build With",
+    subtext: "Technical foundations developed through academic coursework, hands-on projects, and continuous experimentation.",
     categories: [
       {
         title: "Programming Languages",
         items: [
-          { name: "Python", level: "Intermediate", icon: "terminal", note: "Primary language for AI, data scripting, and automation" },
-          { name: "C", level: "Academic Core", icon: "code", note: "Pointers, memory management, and low-level CS logic" },
-          { name: "JavaScript", level: "Working Knowledge", icon: "file-code", note: "Modern ES6+, DOM manipulation, web interactivity" },
-          { name: "HTML5 / CSS3", level: "Proficient", icon: "layout", note: "Semantic structures, Flexbox, Grid, and Tailwind styling" }
+          { name: "Python", level: "Primary", icon: "terminal", note: "Primary language for AI pipelines, data manipulation, automation" },
+          { name: "C", level: "Core", icon: "code", note: "Low-level memory management, pointers, and foundational algorithms" },
+          { name: "JavaScript", level: "Modern ES6+", icon: "file-code", note: "Interactive web experiences, DOM APIs, and Three.js scripting" },
+          { name: "HTML5 / CSS3", level: "Proficient", icon: "layout", note: "Semantic architecture, responsive Tailwind styling, glassmorphic UI" }
         ]
       },
       {
-        title: "AI & Data Science Basics",
+        title: "AI & Machine Learning Basics",
         items: [
-          { name: "Machine Learning Basics", level: "Foundational", icon: "brain", note: "Regression, classification, supervised learning fundamentals" },
-          { name: "NumPy & Pandas", level: "Hands-on", icon: "database", note: "Data manipulation, arrays, matrix operations" },
-          { name: "Scikit-Learn", level: "Learning", icon: "cpu", note: "Model training, evaluation metrics, pipeline basics" },
-          { name: "OpenCV (Basics)", level: "Experimental", icon: "eye", note: "Image filtering, edge detection, video stream capture" }
+          { name: "Machine Learning Basics", level: "Foundational", icon: "brain", note: "Supervised & unsupervised learning, classification, regression" },
+          { name: "NumPy & Pandas", level: "Hands-on", icon: "database", note: "Vectorized array calculations, dataset preprocessing, analysis" },
+          { name: "Scikit-Learn", level: "Applied", icon: "cpu", note: "Model evaluation, decision trees, feature engineering" },
+          { name: "OpenCV (Basics)", level: "Experimental", icon: "eye", note: "Computer vision, image matrices, real-time webcam streams" }
         ]
       },
       {
         title: "Developer Tools & Workflow",
         items: [
-          { name: "Git", level: "Version Control", icon: "git-branch", note: "Branching, commits, merging, staging workflows" },
-          { name: "GitHub", level: "Active", icon: "github", note: "Repository hosting, collaboration, open-source projects" },
-          { name: "VS Code", level: "Daily Driver", icon: "laptop", note: "Debugging, extensions, Python environment management" },
-          { name: "Linux Basics", level: "Familiar", icon: "command", note: "CLI navigation, bash scripts, package management" }
+          { name: "Git", level: "Version Control", icon: "git-branch", note: "Staging, commits, branching, merging, and pull requests" },
+          { name: "GitHub", level: "Active", icon: "github", note: "Code hosting, repositories, open-source project exploration" },
+          { name: "VS Code", level: "Environment", icon: "laptop", note: "Debugging, linting, Python virtual environments, extensions" },
+          { name: "Linux CLI", level: "Working Knowledge", icon: "command", note: "Bash commands, shell scripts, environment configuration" }
         ]
       }
     ],
+    // The "Currently Learning" row requested in the prompt
     currentlyLearning: [
       {
         name: "Deep Learning & PyTorch",
         category: "Artificial Intelligence",
         progress: "In Progress",
-        description: "Studying neural network architectures, backpropagation, and tensor operations."
+        description: "Studying neural networks, backpropagation calculus, and building deep vision models."
       },
       {
         name: "Next.js & Full-Stack AI",
         category: "Web Engineering",
         progress: "In Progress",
-        description: "Connecting intelligent backend APIs with sleek, reactive front-end interfaces."
+        description: "Connecting state-of-the-art LLMs and diffusion APIs with sleek React/Next.js interfaces."
       },
       {
-        name: "Mathematics for Machine Learning",
-        category: "Core Theory",
+        name: "Mathematics for ML",
+        category: "Core Foundations",
         progress: "In Progress",
-        description: "Linear algebra, multivariate calculus, and probability distributions."
+        description: "Linear algebra, multivariate calculus, optimization, and probability distributions."
       }
     ]
   },
 
-  // Projects Section Details
+  // ------------------------------------------------------------------
+  // 4. PROJECTS SECTION CONFIGURATION (3 Glass Cards with Placeholders)
+  // ------------------------------------------------------------------
   projects: {
-    sectionBadge: "Featured Work",
-    heading: "Things I've Built & Explored",
-    subtext: "A selection of projects exploring Artificial Intelligence, computer science fundamentals, and interactive user experiences.",
+    badge: "Featured Projects",
+    heading: "Turning Ideas Into Working Software",
+    subtext: "Selected projects demonstrating my work in Artificial Intelligence, algorithms, and interactive web design.",
     items: [
       {
         id: "study-ai",
-        title: "StudyAI — Intelligent Learning Assistant",
-        tagline: "LLM-Powered Academic Study Companion",
-        description: "A contextual study tool built for engineering students to summarize complex textbook chapters, generate step-by-step mathematical explanations, and produce customized practice quiz sets using LangChain and modern LLM APIs.",
+        title: "StudyAI — Intelligent Learning Companion",
+        tagline: "LLM-Powered Academic Assistant",
+        description: "An AI-powered academic study tool built to summarize complex engineering chapters, explain mathematical derivations step-by-step, and generate adaptive practice quizzes using LangChain and modern language models.",
         image: "assets/project-1.svg",
         tags: ["Python", "LangChain", "Streamlit", "OpenAI API", "VectorStore"],
         github: "https://github.com/jasilkj",
@@ -155,7 +181,7 @@ const portfolioData = {
         id: "neural-vision",
         title: "NeuralVision — Real-Time Pattern & Face Detector",
         tagline: "Computer Vision & CNN Classification",
-        description: "An interactive computer vision experiment utilizing OpenCV and a convolutional neural network backbone to detect faces and classify facial emotional cues from real-time webcam streams with real-time confidence scores.",
+        description: "An interactive computer vision pipeline leveraging OpenCV and lightweight convolutional neural networks to detect faces and classify facial emotional cues from real-time video feeds with sub-50ms latency.",
         image: "assets/project-2.svg",
         tags: ["Python", "OpenCV", "TensorFlow", "NumPy", "Matplotlib"],
         github: "https://github.com/jasilkj",
@@ -166,7 +192,7 @@ const portfolioData = {
         id: "glass-portfolio",
         title: "GlassPortfolio — Modern 3D Web Experience",
         tagline: "Interactive WebGL & Glassmorphism UI",
-        description: "My personal digital portfolio featuring an interactive Three.js 3D glass torus knot with dynamic specular highlights, smooth scroll-spy navigation, fluid micro-interactions, and a responsive dark aesthetic.",
+        description: "My personal digital portfolio crafted with a custom Three.js glossy 3D glass torus knot, dynamic procedural specular reflections, responsive glassmorphism cards, and fluid scroll micro-interactions.",
         image: "assets/project-3.svg",
         tags: ["JavaScript", "Three.js", "Tailwind CSS", "HTML5", "Lucide"],
         github: "https://github.com/jasilkj",
@@ -176,18 +202,20 @@ const portfolioData = {
     ]
   },
 
-  // Education & Timeline Section Details
+  // ------------------------------------------------------------------
+  // 5. EDUCATION & TIMELINE CONFIGURATION
+  // ------------------------------------------------------------------
   education: {
-    sectionBadge: "Academic Journey",
+    badge: "Academic Journey",
     heading: "Education & Milestones",
-    subtext: "My educational path in Computer Science and Artificial Intelligence.",
+    subtext: "My academic path in Computer Science and Artificial Intelligence at Thejus Engineering College.",
     timeline: [
       {
         period: "2024 — 2028 (Present)",
         degree: "B.Tech in Computer Science & Engineering (Artificial Intelligence)",
         institution: "Thejus Engineering College, Vellarakkad, Thrissur",
         affiliation: "Affiliated to APJ Abdul Kalam Technological University (KTU)",
-        status: "Currently in 1st Year",
+        status: "1st Year Undergraduate",
         highlights: [
           "Core coursework: C Programming, Discrete Mathematics, Engineering Physics, and Foundational CS Principles.",
           "Active self-directed learning in Python, Machine Learning libraries, and Data Structures.",
@@ -197,50 +225,75 @@ const portfolioData = {
       {
         period: "2022 — 2024",
         degree: "Higher Secondary Education (Plus Two / Class XII)",
-        institution: "Science with Computer Science Stream",
+        institution: "Science Stream with Computer Science",
         affiliation: "Board of Higher Secondary Examinations, Kerala",
         status: "Completed with High Academic Standing",
         highlights: [
           "Specialized in Computer Science, Mathematics, Physics, and Chemistry.",
-          "First exposure to C++ and object-oriented programming concepts.",
-          "Developed passion for technology and pursued higher education in AI."
+          "First exposure to structured programming and algorithmic thinking.",
+          "Decided to specialize in Artificial Intelligence for undergraduate engineering."
         ]
       },
       {
         period: "2022",
         degree: "Secondary School Leaving Certificate (SSLC / Class X)",
         institution: "General Education Department, Kerala",
-        affiliation: "Kerala State Board",
+        affiliation: "Kerala State Education Board",
         status: "Completed with Distinction",
         highlights: [
-          "Excellence across sciences and mathematics.",
-          "Active participant in school science exhibitions and computer clubs."
+          "Academic distinction across Mathematics, Science, and Social Sciences.",
+          "Active participant in school science exhibitions and technical clubs."
         ]
       }
     ]
   },
 
-  // Contact Section Details
+  // ------------------------------------------------------------------
+  // 6. CONTACT SECTION & SOCIAL LINKS
+  // ------------------------------------------------------------------
   contact: {
-    sectionBadge: "Get in Touch",
-    heading: "Let's Connect & Build Together",
-    subtext: "I'm always eager to collaborate on AI projects, participate in hackathons, or discuss exciting engineering ideas. Drop me a line anytime!",
+    badge: "Get In Touch",
+    heading: "Let's Start a Conversation",
+    subtext: "Whether you want to collaborate on an AI project, invite me to a hackathon, or discuss technology — my inbox is always open.",
     email: "jasilkj.official@gmail.com",
     location: "Thrissur, Kerala, India",
+    college: "Thejus Engineering College, Thrissur",
     socials: [
-      { name: "GitHub", url: "https://github.com/jasilkj", icon: "github", label: "github.com/jasilkj" },
-      { name: "LinkedIn", url: "https://linkedin.com/in/jasilkj", icon: "linkedin", label: "linkedin.com/in/jasilkj" },
-      { name: "Instagram", url: "https://instagram.com/jasil.kj", icon: "instagram", label: "@jasil.kj" },
-      { name: "Email", url: "mailto:jasilkj.official@gmail.com", icon: "mail", label: "jasilkj.official@gmail.com" }
+      {
+        name: "GitHub",
+        url: "https://github.com/jasilkj",
+        icon: "github",
+        handle: "github.com/jasilkj"
+      },
+      {
+        name: "LinkedIn",
+        url: "https://linkedin.com/in/jasilkj",
+        icon: "linkedin",
+        handle: "linkedin.com/in/jasilkj"
+      },
+      {
+        name: "Instagram",
+        url: "https://instagram.com/jasil.kj",
+        icon: "instagram",
+        handle: "@jasil.kj"
+      },
+      {
+        name: "Email",
+        url: "mailto:jasilkj.official@gmail.com",
+        icon: "mail",
+        handle: "jasilkj.official@gmail.com"
+      }
     ]
   },
 
-  // Footer Details
+  // ------------------------------------------------------------------
+  // 7. FOOTER CONFIGURATION
+  // ------------------------------------------------------------------
   footer: {
     copyright: "© 2026 Jasil KJ",
-    tagline: "Designed with precision. Crafted for the future of AI.",
+    subtitle: "B.Tech CSE (AI) @ Thejus Engineering College, Thrissur",
     links: [
-      { label: "Hero", href: "#hero" },
+      { label: "Home", href: "#hero" },
       { label: "About", href: "#about" },
       { label: "Skills", href: "#skills" },
       { label: "Projects", href: "#projects" },
@@ -250,12 +303,12 @@ const portfolioData = {
   }
 };
 
-// Make available globally in browser window
+// Expose on global window object
 if (typeof window !== "undefined") {
   window.portfolioData = portfolioData;
 }
 
-// Support Node/ES exports if needed
+// Module export for Node environments
 if (typeof module !== "undefined" && module.exports) {
   module.exports = portfolioData;
 }
